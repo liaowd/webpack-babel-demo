@@ -1,0 +1,38 @@
+// npm install --save-dev @babel/core @babel/cli @babel/preset-env   //需要安装
+// npm install --save @babel/polyfill
+// import "@babel/polyfill"; //useBuiltIns：usage的话，不需要在入口引入
+
+// babel编译出来默认是nodejs规范，有require，需要用webpack转成浏览器代码。
+
+/*
+cli指令：
+npx babel main.js --out-file main-compiled.js
+
+*/
+
+// ---------------------------------------------------------------------
+// 可以在根目录新增文件.browserslistrc
+
+
+
+{
+  "presets": [
+    ["@babel/env", {
+      "modules": false,
+      "targets": {
+        // "edge": "17",
+        // "firefox": "60",
+        // "chrome": "67",
+        // "safari": "11.1",
+        // "ie":"11",
+        // "esmodules": true
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      },
+      "corejs": 3,
+      "useBuiltIns": "usage" 
+      // "useBuiltIns":false 
+      // "useBuiltIns":"entry" 
+    }]
+  ]
+  // "plugins": ["@babel/transform-runtime"]
+}
